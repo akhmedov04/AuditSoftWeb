@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Blog</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .navbar {
+            display: flex;
+            justify-content: center;
+            background-color: #20232a;
+            padding: 20px;
+        }
+        .navbar a {
+            color: #61dafb;
+            text-decoration: none;
+            padding: 10px 20px;
+            margin: 0 10px;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        .navbar a:hover {
+            color: #21a1f1;
+        }
+        .container {
+            flex: 1;
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        .title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .title h1 {
+            font-size: 2.5em;
+            color: #20232a;
+        }
+        .article {
+            background-color: #fff;
+            border: 1px solid #e1e4e8;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .article:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .article h2 {
+            color: #0366d6;
+            margin-bottom: 10px;
+        }
+        .article p.date {
+            color: #586069;
+            font-size: 0.9em;
+            margin-bottom: 20px;
+        }
+        .article img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .article p.text {
+            line-height: 1.6;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #20232a;
+            color: #61dafb;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="/main/">Home</a>
+        <!-- Add more links here if needed -->
+    </div>
+    <div class="container">
+        <div class="title">
+            <h1>Blog Articles</h1>
+        </div>
+        <div>
+            {% for article in blog %}
+            <div class="article">
+                <h2>{{ article.title }}</h2>
+                <p class="date">{{ article.date }}</p>
+                <div>
+                    <img src="{{ article.photo.url }}" alt="{{ article.title }}">
+                </div>
+                <p class="text">{{ article.text }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <footer>
+        &copy; 2024 Blog. All rights reserved.
+    </footer>
+</body>
+</html>
