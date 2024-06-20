@@ -20,16 +20,19 @@ from django.contrib import messages
 
 
 def loginview(request):
-    if request.method == 'POST':
-        user = authenticate(
-            username=request.POST.get('l'),
-            password=request.POST.get('p'),
-        )
-        if user is None:
-            return redirect("/")
-        login(request, user)
+    if request.user.is_authenticated:
         return redirect('/main/')
-    return render(request, 'login.html')
+    else:
+        if request.method == 'POST':
+            username = request.POST['l']
+            password = request.POST['p']
+            user = authenticate(request, username=username, password=password)
+            if user is not None:
+                login(request, user)
+                return redirect('/main/')
+            else:
+                messages.error(request, 'Invalid username or password')
+        return render(request, 'login.html')
 
 def logoutview(request):
     logout(request)

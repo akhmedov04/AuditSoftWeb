@@ -13,3 +13,11 @@ def main(request):
         }
         return render(request, 'main.html', data)
     return redirect('/')
+
+def profil(request):
+    if request.user.is_authenticated:
+        data = {
+            "user":request.user
+        }
+        return render(request, 'profile.html', data)
+    return redirect('/')
