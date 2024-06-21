@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'userapp',
     'apteka',
     'resaud',
+    'erp',
 ]
 
 MIDDLEWARE = [
