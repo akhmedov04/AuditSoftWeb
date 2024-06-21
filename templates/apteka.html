@@ -4,11 +4,13 @@
     <meta charset="UTF-8">
     <title>Blog</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Playfair+Display:wght@700&display=swap');
+
         body {
-            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f9f9f9;
+            background: linear-gradient(to right, #f0f0f0, #d9d9d9);
             color: #333;
             display: flex;
             flex-direction: column;
@@ -16,12 +18,14 @@
         }
         .navbar {
             display: flex;
-            justify-content: center;
-            background-color: #20232a;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(90deg, #1a1a2e, #16213e);
             padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
         .navbar a {
-            color: #61dafb;
+            color: #e0e0e0;
             text-decoration: none;
             padding: 10px 20px;
             margin: 0 10px;
@@ -29,7 +33,11 @@
             transition: color 0.3s;
         }
         .navbar a:hover {
-            color: #21a1f1;
+            color: #f0f0f0;
+        }
+        .submenu {
+            display: flex;
+            gap: 15px;
         }
         .container {
             flex: 1;
@@ -40,10 +48,19 @@
         .title {
             text-align: center;
             margin-bottom: 40px;
+            animation: fadeIn 2s ease-in-out;
         }
         .title h1 {
-            font-size: 2.5em;
-            color: #20232a;
+            font-family: 'Playfair Display', serif;
+            font-size: 3em;
+            color: #1a1a2e;
+            background: linear-gradient(to right, #1a1a2e, #16213e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
         .article {
             background-color: #fff;
@@ -59,7 +76,7 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
         .article h2 {
-            color: #0366d6;
+            color: #1a1a2e;
             margin-bottom: 10px;
         }
         .article p.date {
@@ -79,15 +96,24 @@
         footer {
             text-align: center;
             padding: 20px;
-            background-color: #20232a;
-            color: #61dafb;
+            background-color: #1a1a2e;
+            color: #e0e0e0;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        footer:hover {
+            background-color: #16213e;
+            color: #f0f0f0;
         }
     </style>
 </head>
 <body>
     <div class="navbar">
         <a href="/main/">Home</a>
-        <!-- Add more links here if needed -->
+        <div class="submenu">
+            <a href="/about/">About</a>
+            <a href="/contact/">Contact</a>
+            <!-- Add more links here if needed -->
+        </div>
     </div>
     <div class="container">
         <div class="title">
@@ -107,7 +133,7 @@
         </div>
     </div>
     <footer>
-        &copy; 2024 Blog. All rights reserved.
+        © 2024 Blog. All rights reserved.
     </footer>
 </body>
 </html>
